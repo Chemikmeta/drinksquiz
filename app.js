@@ -2,7 +2,7 @@ const PASS_PERCENT = 100;
 
 const questions = [
   { name: "Cuba Libre", ingredients: ["40ml bacardi carta blanca","sok z limonki","cola"] },
-  { name: "Tequila Sunrise", ingredients: ["40ml patron silver","sok pomarańczowy","grenadyna"] },
+  { name: "Tequila Sunrise", ingredients: ["40ml patrón silver","sok pomarańczowy","grenadyna"] },
   { name: "Aperol Spritz", ingredients: ["90ml prosecco","60ml aperol","30ml woda gazowana"] },
   { name: "Fierro Tonic", ingredients: ["80ml martini fierro","80ml thomas henry tonic water"] },
   { name: "B-52", ingredients: ["bols coffee","baileys","cointreau"] },
