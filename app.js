@@ -19,7 +19,50 @@ const questions = [
 
 const quizDiv = document.getElementById("quiz");
 
-// generowanie pytań
+// ===== TWORZENIE PRZYCISKÓW NAWIGACYJNYCH =====
+const navDiv = document.createElement("div");
+navDiv.id = "navButtons";
+navDiv.style.marginBottom = "20px";
+
+navDiv.innerHTML = `
+  <button id="showInstructions">Instrukcja</button>
+  <button id="showQuiz" style="display:none;">Quiz</button>
+`;
+
+quizDiv.parentNode.insertBefore(navDiv, quizDiv);
+
+// ===== TWORZENIE INSTRUKCJI =====
+const instructionDiv = document.createElement("div");
+instructionDiv.id = "instruction";
+instructionDiv.style.display = "none"; // ukryta na start
+instructionDiv.innerHTML = `
+  <h2>Instrukcja pisania składników 🍹</h2>
+  <ul>
+    <li>Wszystkie ilości w ml piszemy <strong>łącznie z jednostką</strong> (np. 40ml), bez spacji ani dodatkowych części.</li>
+    <li>Soki i płyny w prosty sposób: po prostu nazwa (np. sok pomarańczowy, sok z cytryny), <strong>bez dodawania cząstek</strong>.</li>
+    <li>Każdy drink w quizie opisany jest w ml, bez użycia oz czy innych jednostek.</li>
+  </ul>
+  <hr>
+`;
+
+quizDiv.parentNode.insertBefore(instructionDiv, quizDiv);
+
+// ===== FUNKCJE PRZEŁĄCZANIA =====
+document.getElementById("showInstructions").onclick = () => {
+  instructionDiv.style.display = "block";
+  quizDiv.style.display = "none";
+  document.getElementById("showInstructions").style.display = "none";
+  document.getElementById("showQuiz").style.display = "inline";
+};
+
+document.getElementById("showQuiz").onclick = () => {
+  instructionDiv.style.display = "none";
+  quizDiv.style.display = "block";
+  document.getElementById("showInstructions").style.display = "inline";
+  document.getElementById("showQuiz").style.display = "none";
+};
+
+// ===== GENEROWANIE PYTAŃ =====
 questions.forEach((q, i) => {
   quizDiv.innerHTML += `
     <div class="question">
@@ -29,7 +72,7 @@ questions.forEach((q, i) => {
   `;
 });
 
-// zakończenie egzaminu
+// ===== ZAKOŃCZENIE EGZAMINU =====
 document.getElementById("finish").onclick = () => {
   let score = 0;
   let details = "";
@@ -61,7 +104,7 @@ document.getElementById("finish").onclick = () => {
   }
 };
 
-// rejestracja service worker
+// ===== REJESTRACJA SERVICE WORKER =====
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("service-worker.js");
 }
@@ -71,4 +114,3 @@ history.pushState(null, null, location.href);
 window.onpopstate = function () {
   history.go(1);
 };
-
