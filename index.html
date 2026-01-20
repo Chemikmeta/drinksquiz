@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Barmański – Egzamin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Manifest PWA -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Ikona dla iPhone -->
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <!-- Styl CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🍸 Quiz Barmański – Egzamin</h1>
+
+<div id="quiz"></div>
+
+<button id="finish">Zakończ egzamin</button>
+
+<div id="result"></div>
+
+<!-- Skrypt aplikacji -->
+<script src="app.js"></script>
+
+<!-- Rejestracja Service Workera dla PWA -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service.js')
+    .then(() => console.log('Service Worker zarejestrowany'))
+    .catch(err => console.error('Błąd rejestracji SW:', err));
+}
+</script>
+
+</body>
+</html>
