@@ -16,6 +16,20 @@
 </head>
 <body>
 
+<script>
+  // -----------------------
+  // ZABEZPIECZENIE HASŁEM
+  // -----------------------
+  const password = "3405"; // Twoje hasło
+  const userInput = prompt("Podaj hasło, aby uruchomić aplikację:");
+
+  if(userInput !== password){
+    alert("Niepoprawne hasło!"); 
+    // przekierowanie na pustą stronę lub inny adres
+    window.location.href = "https://www.google.com"; 
+  }
+</script>
+
 <h1>🍸 Quiz Barmański – Egzamin</h1>
 
 <div id="quiz"></div>
